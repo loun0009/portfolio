@@ -1,25 +1,22 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/home'
-import ProjectDetails from './pages/projectDetails'
 import Navbar from './components/navbar'
+import Hero from './components/hero'
+import Skills from './components/skills'
+import Projects from './components/projects'
+import Contact from './components/contacts'
 import Footer from './components/footer'
+import Profile from './components/profile'
 
-
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
       <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project/:id" element={<ProjectDetails />} />
-          </Routes>
-        </main>
+      <Hero />
+      <Profile/>
+      <Skills />
+      <Projects />
+      <Contact />
       <Footer />
     </div>
   )
 }
-
-
-export default App
