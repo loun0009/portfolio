@@ -1,16 +1,56 @@
-# React + Vite
+# Portfolio — Présentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un projet de portfolio personnel construit avec React + Vite. Conçu pour présenter des réalisations, un CV et des moyens de contact de façon légère et performante.
 
-Currently, two official plugins are available:
+## Principales fonctionnalités
+- Pages de présentation : Accueil, Projets, À propos, Contact
+- Chargement rapide grâce à Vite et HMR en développement
+- Structure modulaire des composants React
+- Configuration ESLint pour un code propre (option TypeScript possible)
+- Optimisé pour le déploiement statique
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+1. Cloner le dépôt :
+```bash
+git clone <URL_DU_REPO>
+cd <NOM_DU_REPO>
+```
+2. Installer les dépendances :
+```bash
+npm install
+# ou
+yarn
+```
 
-## React Compiler
+## Lancer en local
+```bash
+npm run dev
+# ou
+yarn dev
+```
+Ouvrir http://localhost:5173 (ou l'URL indiquée dans la console).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build pour production
+```bash
+npm run build
+# ou
+yarn build
+```
+Le dossier de sortie (dist) est prêt pour le déploiement statique.
 
-## Expanding the ESLint configuration
+## Structure du projet (extrait)
+- src/ — code source (composants, pages, styles)
+- public/ — assets statiques
+- vit.config.* — configuration Vite
+- package.json — scripts et dépendances
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Personnalisation rapide
+- Modifier les composants et les routes dans src/
+- Mettre à jour les métadonnées (title, description) dans index.html
+- Remplacer les images et contenus dans public/ et src/assets/
+
+## Technologies
+- React
+- Vite
+- ESLint (configurable)
+
