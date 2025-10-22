@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from '../components/hero'
 import Skills from '../components/skills'
 import Projects from '../components/projects'

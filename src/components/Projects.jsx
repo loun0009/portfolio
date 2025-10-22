@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Github, Maximize2 } from 'lucide-react';
 import projects from '../data/projects'
 
 export default function Projects() {
@@ -35,8 +35,21 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 bg-white rounded-full hover:bg-slate-100 transition-colors duration-200"
+                      aria-label={`Voir le dépôt GitHub de ${project.title}`}
                     >
                       <Github className="w-5 h-5 text-slate-900" />
+                    </a>
+
+                    {/* Bouton pour afficher l'image en taille réelle */}
+                    <a
+                      href={project.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-white rounded-full hover:bg-slate-100 transition-colors duration-200"
+                      aria-label={`Voir l'image de ${project.title} en taille réelle`}
+                      title="Voir l'image en taille réelle"
+                    >
+                      <Maximize2 className="w-5 h-5 text-slate-900" />
                     </a>
                   </div>
                 </div>
@@ -69,4 +82,3 @@ export default function Projects() {
     </section>
   );
 }
-
