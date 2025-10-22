@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
 
 export default function Hero() {
@@ -174,9 +174,7 @@ export default function Hero() {
             Enzo Loungoundji
           </p>
 
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-delay-2">
-            Etudiant en BUT informatique à l'IUT de Reims
-          </p>
+          
 
           <div className="flex gap-6 justify-center mb-12 animate-fade-in-delay-3">
             <a
