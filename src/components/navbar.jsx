@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '#home', label: 'Accueil' },
-  { href: '#profile', label: 'Moi' },
+  { href: '#profile', label: 'Profil' },
   { href: '#skills', label: 'Compétences' },
   { href: '#projects', label: 'Projets' },
 ]
@@ -47,7 +47,7 @@ export default function Navbar() {
               isScrolled ? 'text-slate-900' : 'text-white'
             }`}
           >
-            Mon portfolio
+            Enzo Loungoundji
           </a>
 
           {/* Liens desktop */}
