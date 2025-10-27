@@ -2,6 +2,7 @@ import cinema from '../assets/cinema.png';
 import snippets from '../assets/snippets.png';
 import manager from '../assets/manager.png';
 import gestion from '../assets/gestion.png';
+import portfolio from '../assets/portfolio.png';
 
 const projects = [
   {
@@ -31,6 +32,13 @@ const projects = [
     image: manager,
     tags: ['JavaScript', 'React Native','Expo', 'Gitlab API'],
     github: 'https://github.com/loun0009/gitlab-manager',
+  },
+  {
+    title: 'Portfolio',
+    description: 'Mon portfolio personnel, réalisé avec React et Tailwind CSS, pour présenter mes compétences, projets et expériences professionnelles.',
+    image: portfolio,
+    tags: ['JavaScript', 'React', 'Tailwind'],
+    github: 'https://github.com/loun0009/portfolio',
   }
 ];
 
