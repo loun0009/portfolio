@@ -11,7 +11,7 @@ export default function Skills() {
               Compétences Techniques
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Un apprentissage diversifié couvrant l'ensemble du développement web moderne
+              Un apprentissage diversifié acquis au cours de différent projet couvrant une partie du développement web moderne.
             </p>
           </div>
 
