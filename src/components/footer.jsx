@@ -1,7 +1,10 @@
 function Footer() {
   return (
-    <footer className="py-6 text-center text-sm bg-slate-100 dark:bg-slate-800">
-      © {new Date().getFullYear()} Enzo Loungoundji — Portfolio de Enzo Loungoundji. Tous droits réservés.
+    <footer className="relative z-10 border-t border-white/50 bg-white/60 py-8 backdrop-blur-xl">
+      <div className="section-shell flex flex-col items-center justify-between gap-3 text-center text-sm text-slate-600 md:flex-row md:text-left">
+        <p>© {new Date().getFullYear()} Enzo Loungoundji. Portfolio personnel.</p>
+        <p>Conçu pour être plus lisible, dynamique et orienté expérience.</p>
+      </div>
     </footer>
   )
 }
