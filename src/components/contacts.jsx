@@ -1,41 +1,53 @@
-import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react'
+import { Mail, MapPin, Phone, Github, Linkedin, Send, CheckCircle2 } from 'lucide-react'
 import emailjs from 'emailjs-com'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 function Contact() {
   const form = useRef()
+  const [isSending, setIsSending] = useState(false)
+  const [submitState, setSubmitState] = useState('idle')
 
   const sendEmail = (e) => {
     e.preventDefault()
+    setIsSending(true)
+    setSubmitState('idle')
+
     emailjs
       .sendForm('service_b64aaaw', 'template_ytpteoh', form.current, 'MHNxQz9prKPI9MNou')
-      .then(() => alert('Message envoyé avec succès !'))
-      .catch(() => alert("Erreur lors de l’envoi du message."))
+      .then(() => {
+        setSubmitState('success')
+        setIsSending(false)
+        form.current?.reset()
+      })
+      .catch(() => {
+        setSubmitState('error')
+        setIsSending(false)
+      })
   }
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+    <section id="contact" className="relative py-24">
+      <div className="section-shell px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
-              Travaillons Ensemble
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-600">Contact</p>
+            <h2 className="section-title mt-4 leading-tight">
+              Une prise de contact simple, directe et claire.
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="section-copy mt-4">
               Un projet en tête ? N&apos;hésitez pas à me contacter pour en discuter.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Bloc gauche : infos de contact */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="glass-panel rounded-[2rem] p-8 md:p-10">
               <h3 className="text-2xl font-bold text-slate-900 mb-8">
                 Informations de contact
               </h3>
 
               <div className="space-y-8 mb-10">
                 <div className="flex items-start gap-5">
-                  <div className="p-3 bg-blue-50 rounded-xl">
+                  <div className="rounded-2xl bg-sky-50 p-3">
                     <Mail className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
@@ -50,7 +62,7 @@ function Contact() {
                 </div>
 
                 <div className="flex items-start gap-5">
-                  <div className="p-3 bg-blue-50 rounded-xl">
+                  <div className="rounded-2xl bg-sky-50 p-3">
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
@@ -65,7 +77,7 @@ function Contact() {
                 </div>
 
                 <div className="flex items-start gap-5">
-                  <div className="p-3 bg-blue-50 rounded-xl">
+                  <div className="rounded-2xl bg-sky-50 p-3">
                     <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
@@ -96,10 +108,17 @@ function Contact() {
                   </a>
                 </div>
               </div>
+
+              <div className="mt-10 rounded-[1.5rem] border border-emerald-200 bg-emerald-50/70 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Disponibilité</p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  Je suis actuellement ouvert aux opportunités de stage ou d’alternance en développement web,
+                  avec une préférence pour des missions où je peux construire et améliorer des interfaces réelles.
+                </p>
+              </div>
             </div>
 
-            {/* Bloc droit : formulaire */}
-            <form ref={form} onSubmit={sendEmail} className="bg-white p-8 rounded-2xl shadow-sm">
+            <form ref={form} onSubmit={sendEmail} className="glass-panel rounded-[2rem] p-8 md:p-10">
               <h3 className="text-2xl font-bold text-slate-900 mb-8">
                 Envoyez-moi un message
               </h3>
@@ -111,8 +130,8 @@ function Contact() {
                   <input
                     type="text"
                     id="name"
-                    name="name" 
-                    className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
+                    name="name"
+                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Votre nom"
                     required
                   />
@@ -124,8 +143,8 @@ function Contact() {
                   <input
                     type="email"
                     id="email"
-                    name="email" 
-                    className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
+                    name="email"
+                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Votre email"
                     required
                   />
@@ -136,19 +155,34 @@ function Contact() {
                   </label>
                   <textarea
                     id="message"
-                    name="message" 
+                    name="message"
                     rows="5"
-                    className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
+                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Votre message"
                     required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-300"
+                  disabled={isSending}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#0f172a_0%,#0369a1_55%,#22c55e_100%)] px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Envoyer
+                  {isSending ? 'Envoi en cours...' : 'Envoyer'}
+                  {!isSending && <Send className="h-4 w-4" />}
                 </button>
+
+                {submitState === 'success' && (
+                  <div className="flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                    <CheckCircle2 className="h-4 w-4" />
+                    Message envoyé avec succès.
+                  </div>
+                )}
+
+                {submitState === 'error' && (
+                  <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                    Une erreur est survenue pendant l’envoi. Vous pouvez aussi me contacter directement par email.
+                  </div>
+                )}
               </div>
             </form>
           </div>
