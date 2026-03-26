@@ -10,6 +10,8 @@ const projects = [
     description: "Projet scolaire en groupe d'application web de gestion d'emploi du temps de professeur grâce à l'importation d'un tableau excel, ou par attribution de cours sur l'application.",
     image: gestion,
     tags: ['JavaScript','React', 'PHP', 'Symfony', 'Tailwind'],
+    type: 'Web app',
+    highlights: ['Gestion des imports Excel', 'Travail en équipe', 'Organisation métier des plannings'],
     github: 'https://github.com/loun0009/Projet-gestion',
   },
   {
@@ -17,6 +19,8 @@ const projects = [
     description: 'Petit site web pour la decouverte de TypeScript et Prisma, le site permet de consulter et de rédiger des petits extrait de code comme des articles. ',
     image: snippets,
     tags: ['Javascript', 'TypeScript', 'CSS', 'Prisma'],
+    type: 'Plateforme',
+    highlights: ['Découverte de Prisma', 'Publication de contenu', 'Exploration TypeScript'],
     github: 'https://github.com/loun0009/Snippets',
   },
   {
@@ -24,6 +28,8 @@ const projects = [
     description: 'Projet scolaire en binôme, voici un site un en PHP qui répertorie des films depuis une base de données avec leur synopsis et acteur principaux avec un style imposé. ',
     image: cinema,
     tags: ['PHP', 'CSS'],
+    type: 'Projet scolaire',
+    highlights: ['Connexion base de données', 'Travail en binôme', 'Respect d’un cadre visuel imposé'],
     github: 'https://github.com/loun0009/Catalogue-film',
   },
   {
@@ -31,6 +37,8 @@ const projects = [
     description: 'Application web de gestion de projet Gitlab, permettant de visualiser les projets, les membres, les issues et les merge requests d\'un groupe Gitlab via l\'API Gitlab.',
     image: manager,
     tags: ['JavaScript', 'React Native','Expo', 'Gitlab API'],
+    type: 'App mobile',
+    highlights: ['Consommation API GitLab', 'Visualisation de données projet', 'Expérience mobile avec Expo'],
     github: 'https://github.com/loun0009/gitlab-manager',
   },
   {
@@ -38,6 +46,8 @@ const projects = [
     description: 'Mon portfolio personnel, réalisé avec React et Tailwind CSS, pour présenter mes compétences, projets et expériences professionnelles.',
     image: portfolio,
     tags: ['JavaScript', 'React', 'Tailwind'],
+    type: 'Vitrine',
+    highlights: ['Direction visuelle sur mesure', 'Animations légères', 'Présentation structurée du profil'],
     github: 'https://github.com/loun0009/portfolio',
   }
 ];
