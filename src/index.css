@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  --surface: #f8fafc;
+  --surface-elevated: #ffffffc7;
+  --surface-strong: #0f172aeb;
+  --ink: #0f172a;
+  --ink-muted: #475569;
+  --line: #94a3b83d;
+}
 
 @layer base {
   html {
@@ -7,11 +15,46 @@
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased text-slate-900;
+    background-color: var(--surface);
+    font-family: "Segoe UI", "Inter", sans-serif;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(#94a3b814 1px, transparent 1px),
+      linear-gradient(90deg, #94a3b814 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black 35%, transparent 78%);
+    z-index: 0;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #0ea5e973 #ffffff59;
+  }
+
+  ::selection {
+    background: #0ea5e933;
+    color: var(--ink);
   }
 }
 
 @layer utilities {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -30,6 +73,56 @@
     50% {
       opacity: 0.8;
     }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(24px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(24px) rotate(-360deg);
+    }
+  }
+
+  .glass-panel {
+    background: var(--surface-elevated);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 60px #0f172a14;
+  }
+
+  .section-shell {
+    @apply relative mx-auto max-w-7xl px-6;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold tracking-tight text-slate-950 md:text-5xl;
+  }
+
+  .section-copy {
+    @apply mx-auto max-w-2xl text-base leading-7 text-slate-600 md:text-lg;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .animate-fade-in {
@@ -54,5 +147,18 @@
 
   .animate-pulse-slow {
     animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .animate-orbit {
+    animation: orbit 12s linear infinite;
   }
 }
