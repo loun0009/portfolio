@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone, Github, Linkedin, Send, CheckCircle2 } from 'lucide-react'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
 import { useRef, useState } from 'react'
 
 function Contact() {
