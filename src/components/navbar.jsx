@@ -96,7 +96,7 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, '#contact')}
               className="rounded-full border border-sky-400/30 bg-[linear-gradient(135deg,#0f172a_0%,#0369a1_55%,#22c55e_100%)] px-6 py-2.5 text-sm font-semibold text-white shadow-[0_16px_30px_#0ea5e938] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_#22c55e38]"
             >
-              Disponible pour un stage
+              Disponible
             </a>
           </div>
 

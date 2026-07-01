@@ -2,18 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { Github, Linkedin, Mail, ArrowDown, Sparkles, MousePointer2 } from 'lucide-react'
 
 const roleLabels = [
-  'Développeur web full-stack',
-  'Étudiant en BUT Informatique',
-  'Créateur d’interfaces React',
+  'Futur développeur web full-stack',
+  "Étudiant en école d'ingénieur informatique",
 ]
 
 const quickFacts = [
-  { label: 'Stack favorite', value: 'React, Tailwind, Node' },
-  { label: 'Objectif', value: 'Stage / alternance 2026' },
-  { label: 'Zone', value: 'Reims, Paris, remote' },
+  { label: 'Objectif', value: 'Alternance 2026' },
+  { label: 'Zone', value: 'Paris' },
 ]
 
 export default function Hero() {
+
+  // Canvas and mouse references
   const canvasRef = useRef(null)
   const mouse = useRef({ x: null, y: null })
   const [activeRole, setActiveRole] = useState(0)
@@ -175,6 +175,7 @@ export default function Hero() {
     }
   }, [])
 
+  // Render the hero section with animated background and content
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-28">
       <canvas
@@ -188,7 +189,7 @@ export default function Hero() {
           <div className="max-w-3xl text-left text-white">
 
             <h1 className="animate-fade-in max-w-4xl text-5xl font-black leading-[0.95] tracking-tight text-white md:text-7xl">
-              Je conçois des interfaces claires, rapides et plus engageantes.
+              Enzo Loungoundji
             </h1>
 
             <div className="mt-6 min-h-[3.5rem] overflow-hidden rounded-3xl border border-white/18 bg-slate-950/30 px-5 py-4 backdrop-blur-md">
@@ -198,8 +199,7 @@ export default function Hero() {
             </div>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-100/88 md:text-lg">
-              Enzo Loungoundji, étudiant en développement web. Je transforme des idées en interfaces lisibles,
-              soignées et utiles, avec une attention particulière portée au rythme visuel et à l’expérience utilisateur.
+              Étudiant en développement web et applications. J'aspire à devenir un développeur full-stack compétent.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/90">
@@ -272,10 +272,8 @@ export default function Hero() {
               <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-950">
                 Créer une présence digitale qui donne envie d’explorer.
               </h2>
-              <p className="mt-4 text-sm leading-7 text-slate-700">
-                Un portfolio plus dynamique doit guider, surprendre légèrement et montrer le niveau de finition.
-                C’est ce que cette nouvelle version cherche à faire à travers des cartes réactives, des repères visuels
-                et une hiérarchie plus nette.
+              <p className="italic mt-4 text-sm leading-7 text-slate-700">
+                Un portfolio est une collection ciblée de travaux qui montre les efforts individuels, les progrès et les prestations de l'apprenant·e dans un ou plusieurs domaines
               </p>
 
               <div className="mt-8 space-y-4">

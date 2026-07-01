@@ -12,9 +12,9 @@ const education = [
         details: 'Bases solides en développement, data et méthodologie projet',
     },
     {
-        school: 'IUT de Reims',
-        degree: 'BUT Informatique',
-        years: '2024 - 2026',
+        school: 'Esiee-it Paris',
+        degree: 'Titre d’ingénieur en informatique',
+        years: '2026 - 202X',
         details: 'Conception, développement, validation et travail en équipe',
     },
 ]
@@ -34,13 +34,13 @@ export default function Profile() {
                         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-600">Profil</p>
                         <h2 className="section-title mt-4">Une base technique sérieuse, avec plus d’attention portée à l’expérience.</h2>
                         <p className="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-                            Étudiant en 3e année de BUT Informatique à l’IUT de Reims, je me spécialise dans le développement
+                            Étudiant en 1ère année d'école d'ingénieur à l'esiee-it, je souhaite me spécialiser dans le développement
                             d’applications web. J’aime travailler sur des interfaces qui restent simples à utiliser tout en apportant
-                            du rythme, de la clarté et une vraie sensation de finition.
+                            du rythme, de la clarté.
                         </p>
                         <p className="mt-4 text-base leading-8 text-slate-600 md:text-lg">
-                            Je recherche un stage ou une alternance pour consolider mes acquis sur des projets concrets, avec un
-                            environnement où la qualité technique et l’expérience utilisateur comptent réellement.
+                            Je recherche une alternance pour consolider mes acquis sur des projets concrets, avec un
+                            environnement où la qualité technique et l’expérience utilisateur comptent.
                         </p>
 
                         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -56,7 +56,7 @@ export default function Profile() {
                     <div className="relative">
                         <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-[linear-gradient(180deg,#0ea5e933,#22c55e66,#0f172a1f)] md:block" />
                         <div className="space-y-5">
-                            {education.map((item, idx) => (
+                            {[...education].reverse().map((item, idx) => (
                                 <article
                                     key={item.degree}
                                     className="glass-panel relative rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1 md:pl-12"
@@ -64,7 +64,7 @@ export default function Profile() {
                                       <div className="absolute left-5 top-8 hidden h-4 w-4 rounded-full border-4 border-sky-100 bg-sky-500 shadow-[0_0_0_10px_#0ea5e914] md:block" />
                                     <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                                         <div>
-                                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">Étape {idx + 1}</p>
+                                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">Étape {education.length - idx}</p>
                                             <h3 className="mt-2 text-2xl font-bold text-slate-950">{item.degree}</h3>
                                             <p className="mt-1 text-base font-medium text-slate-700">{item.school}</p>
                                         </div>

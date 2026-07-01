@@ -112,8 +112,8 @@ function Contact() {
               <div className="mt-10 rounded-[1.5rem] border border-emerald-200 bg-emerald-50/70 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Disponibilité</p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
-                  Je suis actuellement ouvert aux opportunités de stage ou d’alternance en développement web,
-                  avec une préférence pour des missions où je peux construire et améliorer des interfaces réelles.
+                  Je suis actuellement ouvert aux opportunités d’alternance en développement web, application ou logiciel
+                  pour la rentrée 2026. N’hésitez pas à me contacter pour toute proposition.
                 </p>
               </div>
             </div>

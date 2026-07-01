@@ -19,7 +19,7 @@ const skillCategories = [
     title: 'Backend',
     color: 'from-emerald-500 to-teal-500',
     summary: 'APIs, logique serveur et structuration fonctionnelle.',
-    detail: 'Je peux contribuer sur la logique applicative, les échanges client-serveur et la mise en place d’une base backend cohérente, notamment en PHP ou autour d’APIs.',
+    detail: 'Je peux contribuer sur la logique applicative et la mise en place d’une base backend cohérente, notamment en PHP ou autour d’APIs.',
     skills: ['Python', 'API REST', 'PHP','Symfony', 'C#'],
     metrics: [
       { label: 'API et logique métier', value: 70 },
@@ -48,7 +48,7 @@ const skillCategories = [
     detail: 'Je ne me limite pas à l’interface : je peux aussi intervenir sur la partie outillage, CI/CD et conteneurisation pour rendre un projet plus robuste.',
     skills: ['Docker','GitHub Actions','GitLab', 'CI/CD'],
     metrics: [
-      { label: 'Docker', value: 55 },
+      { label: 'Docker', value: 60 },
       { label: 'Pipelines CI/CD', value: 25 },
       { label: 'Versioning et process', value: 50 },
     ]
@@ -61,9 +61,8 @@ const skillCategories = [
     detail: 'Ces outils me servent à travailler efficacement, documenter mes essais et garder une bonne vitesse d’exécution dans les projets individuels comme collectifs.',
     skills: ['Git', 'VS Code', 'Figma', 'Postman', 'Linux', 'PhpStorm', 'WebStorm'],
     metrics: [
-      { label: 'Workflow Git', value: 70 },
+      { label: 'Workflow Git', value: 80 },
       { label: 'Tests API', value: 50 },
-      { label: 'Prototypage', value: 40 },
     ]
   },
   {
@@ -75,7 +74,7 @@ const skillCategories = [
     skills: ['Agile/Scrum', 'Résolution de problème', "Travail d'équipe", 'Communication'],
     metrics: [
       { label: 'Travail d’équipe', value: 80 },
-      { label: 'Communication', value: 50 },
+      { label: 'Communication', value: 60 },
       { label: 'Autonomie', value: 70 },
     ]
   }
