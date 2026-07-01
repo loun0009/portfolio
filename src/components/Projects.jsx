@@ -1,6 +1,87 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Github, Maximize2, ArrowUpRight, X } from 'lucide-react'
+import { Github, Maximize2, ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import projects from '../data/projects'
+
+function getProjectMedia(project) {
+  if (!project) return []
+  if (Array.isArray(project.media) && project.media.length > 0) return project.media
+  if (project.image) {
+    return [{ type: 'image', src: project.image, alt: project.title }]
+  }
+  return []
+}
+
+function ProjectMediaCarousel({ mediaItems, title }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [mediaItems])
+
+  if (!mediaItems?.length) return null
+
+  const currentMedia = mediaItems[currentIndex]
+  const hasMultipleMedia = mediaItems.length > 1
+
+  const goToPrevious = () => {
+    setCurrentIndex((previousIndex) => (previousIndex === 0 ? mediaItems.length - 1 : previousIndex - 1))
+  }
+
+  const goToNext = () => {
+    setCurrentIndex((previousIndex) => (previousIndex === mediaItems.length - 1 ? 0 : previousIndex + 1))
+  }
+
+  return (
+    <div className="relative h-full w-full">
+      {currentMedia.type === 'video' ? (
+        <video src={currentMedia.src} poster={currentMedia.poster} controls className="h-full w-full object-contain" />
+      ) : (
+        <img
+          src={currentMedia.src}
+          alt={currentMedia.alt || title}
+          className="h-full w-full object-contain transition-transform duration-700 hover:scale-[1.02]"
+        />
+      )}
+
+      {hasMultipleMedia && (
+        <>
+          <button
+            type="button"
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-slate-950/70 p-2 text-white transition hover:bg-slate-900"
+            aria-label="Voir le média précédent"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-slate-950/70 p-2 text-white transition hover:bg-slate-900"
+            aria-label="Voir le média suivant"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-slate-950/70 px-3 py-2">
+            {mediaItems.map((item, index) => (
+              <button
+                key={`${item.src}-${index}`}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2.5 w-2.5 rounded-full transition ${index === currentIndex ? 'bg-white' : 'bg-white/40'}`}
+                aria-label={`Voir le média ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className="absolute right-4 top-4 rounded-full bg-slate-950/70 px-3 py-1 text-sm font-semibold text-white">
+            {currentIndex + 1}/{mediaItems.length}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('Tous')
@@ -18,6 +99,8 @@ export default function Projects() {
   }, [activeFilter])
 
   const activeProject = visibleProjects[activeProjectIndex] ?? visibleProjects[0]
+  const activeProjectMedia = useMemo(() => getProjectMedia(activeProject), [activeProject])
+  const previewProjectMedia = useMemo(() => getProjectMedia(previewProject), [previewProject])
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter)
@@ -79,11 +162,7 @@ export default function Projects() {
             <div className="glass-panel mb-10 overflow-hidden rounded-[2rem] border-white/70">
               <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="relative min-h-[320px] overflow-hidden bg-[radial-gradient(circle_at_top,_#bae6fdcc,_transparent_38%),linear-gradient(180deg,_#f1f5f9f5,_#e2e8f0eb)] p-6 md:p-8">
-                  <img
-                    src={activeProject.image}
-                    alt={activeProject.title}
-                    className="h-full w-full object-contain transition-transform duration-700 hover:scale-[1.02]"
-                  />
+                  <ProjectMediaCarousel mediaItems={activeProjectMedia} title={activeProject.title} />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-900/14 to-transparent" />
                 </div>
 
@@ -147,23 +226,25 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             {visibleProjects.map((project, index) => (
-              <button
+              <div
                 key={project.title}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() => setActiveProjectIndex(index)}
-                className={`group overflow-hidden rounded-[1.75rem] border text-left transition-all duration-300 hover:-translate-y-2 ${
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    setActiveProjectIndex(index)
+                  }
+                }}
+                className={`group cursor-pointer overflow-hidden rounded-[1.75rem] border text-left transition-all duration-300 hover:-translate-y-2 ${
                   activeProject?.title === project.title
                     ? 'border-slate-900 bg-slate-900 text-white shadow-[0_24px_60px_#0f172a2e]'
                     : 'glass-panel border-white/70 text-slate-900'
                 }`}
               >
                 <div className="relative flex h-52 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_#bae6fdb3,_transparent_35%),linear-gradient(180deg,_#f8fafcf5,_#e2e8f0e6)] p-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-900/18 to-transparent" />
+                  <ProjectMediaCarousel mediaItems={getProjectMedia(project)} title={project.title} />
                   <div className="absolute bottom-4 right-4 rounded-full bg-white/90 p-2 text-slate-900">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
@@ -194,7 +275,7 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -223,11 +304,7 @@ export default function Projects() {
 
             <div className="grid max-h-[90vh] overflow-auto lg:grid-cols-[1.2fr_0.8fr]">
               <div className="flex min-h-[320px] items-center justify-center bg-[radial-gradient(circle_at_top,_#bae6fdbf,_transparent_34%),linear-gradient(180deg,_#f8fafcfa,_#e2e8f0f0)] p-6 md:min-h-[520px] md:p-8">
-                <img
-                  src={previewProject.image}
-                  alt={previewProject.title}
-                  className="max-h-[70vh] w-full object-contain"
-                />
+                <ProjectMediaCarousel mediaItems={previewProjectMedia} title={previewProject.title} />
               </div>
 
               <div className="p-8 md:p-10">
