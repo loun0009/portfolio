@@ -104,7 +104,7 @@ const projects = [
     tags: ['TypeScript', 'React', 'Supabase','Expo'],
     type: 'Application mobile',
     highlights: ['Recommandation personnalisée', 'Découverte de nouveaux parfums', 'Expérience utilisateur immersive'],
-    github: '',
+    github: 'https://github.com/loun0009/Skyscent',
   }
 ];
 
