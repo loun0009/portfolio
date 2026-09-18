@@ -161,7 +161,7 @@ export default function Projects() {
           {activeProject && (
             <div className="glass-panel mb-10 overflow-hidden rounded-[2rem] border-white/70">
               <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="relative min-h-[320px] overflow-hidden bg-[radial-gradient(circle_at_top,_#bae6fdcc,_transparent_38%),linear-gradient(180deg,_#f1f5f9f5,_#e2e8f0eb)] p-6 md:p-8">
+                <div className="relative h-[360px] overflow-hidden bg-[radial-gradient(circle_at_top,_#bae6fdcc,_transparent_38%),linear-gradient(180deg,_#f1f5f9f5,_#e2e8f0eb)] p-6 md:h-[520px] md:p-8">
                   <ProjectMediaCarousel mediaItems={activeProjectMedia} title={activeProject.title} />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-900/14 to-transparent" />
                 </div>
@@ -303,7 +303,7 @@ export default function Projects() {
             </button>
 
             <div className="grid max-h-[90vh] overflow-auto lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="flex min-h-[320px] items-center justify-center bg-[radial-gradient(circle_at_top,_#bae6fdbf,_transparent_34%),linear-gradient(180deg,_#f8fafcfa,_#e2e8f0f0)] p-6 md:min-h-[520px] md:p-8">
+              <div className="flex h-[55vh] min-h-[320px] max-h-[620px] items-center justify-center bg-[radial-gradient(circle_at_top,_#bae6fdbf,_transparent_34%),linear-gradient(180deg,_#f8fafcfa,_#e2e8f0f0)] p-6 md:p-8">
                 <ProjectMediaCarousel mediaItems={previewProjectMedia} title={previewProject.title} />
               </div>
 
